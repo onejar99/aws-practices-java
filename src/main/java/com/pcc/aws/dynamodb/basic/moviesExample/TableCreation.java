@@ -3,11 +3,15 @@ package com.pcc.aws.dynamodb.basic.moviesExample;
 import com.amazonaws.services.dynamodbv2.document.DynamoDB;
 import com.amazonaws.services.dynamodbv2.document.Table;
 import com.amazonaws.services.dynamodbv2.model.*;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class TableCreation {
+    private static Log logger = LogFactory.getLog(TableCreation.class);
+
     public static void main(String[] args) {
         final String tableName = "Movies7";
         DynamoDB dynamoDB = ConfigServiceClient.buildDynamoDBClient();
@@ -25,12 +29,11 @@ public class TableCreation {
                             new AttributeDefinition("year", ScalarAttributeType.N),
                             new AttributeDefinition("title", ScalarAttributeType.S)),
                     new ProvisionedThroughput(10L, 10L));
-            System.out.println(String.format("Creating Table, it may take few seconds... (Table status: %s)", table.getDescription().getTableStatus()));
+            logger.info(String.format("Creating Table, it may take few seconds... (Table status: %s)", table.getDescription().getTableStatus()));
             table.waitForActive();
-            System.out.println(String.format("Created and activated Table successfully. (Table status: %s)", table.getDescription().getTableStatus()));
+            logger.info(String.format("Created and activated Table successfully. (Table status: %s)", table.getDescription().getTableStatus()));
         } catch (Exception e) {
-            System.err.println("Unable to create table: ");
-            System.err.println(e.getMessage());
+            logger.error("Unable to create table!", e);
         }
         return table;
     }
@@ -53,12 +56,11 @@ public class TableCreation {
 
             // create table
             table = dynamoDB.createTable(tableName, keySchema, attributeDefinitions, provisionedThroughput);
-            System.out.println(String.format("Created Table, Table status: %s", table.getDescription().getTableStatus()));
+            logger.info(String.format("Creating Table, it may take few seconds... (Table status: %s)", table.getDescription().getTableStatus()));
             table.waitForActive(); // wait few seconds for creating
-            System.out.println(String.format("Activated Table, Table status: %s", table.getDescription().getTableStatus()));
+            logger.info(String.format("Created and activated Table successfully. (Table status: %s)", table.getDescription().getTableStatus()));
         } catch (Exception e) {
-            System.err.println("Unable to create table: ");
-            System.err.println(e.getMessage());
+            logger.error("Unable to create table!", e);
         }
         return table;
     }
