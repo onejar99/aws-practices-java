@@ -1,6 +1,13 @@
 AWS DynamoDB Basic Example: Movies
 ==========================================
 
+Prerequisites
+---------------------
+Local AWS configuration and credential files are configured.
+* `~/.aws/config`
+* `~/.aws/credentials`
+
+
 Table Schema
 ---------------------
 
