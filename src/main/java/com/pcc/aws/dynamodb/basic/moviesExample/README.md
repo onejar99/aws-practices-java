@@ -25,3 +25,10 @@ Running
 2019/05/18 15:51:30 INFO  [TableCreation.java:32] : Creating Table, it may take few seconds... (Table status: CREATING)
 2019/05/18 15:51:41 INFO  [TableCreation.java:34] : Created and activated Table successfully. (Table status: ACTIVE)
 ```
+
+### TableDeletion
+
+```
+2019/05/18 16:25:36 INFO  [TableDeletion.java:21] : Deleting Table, it may take few seconds... (Table object: {Movies7: null})
+2019/05/18 16:25:42 INFO  [TableDeletion.java:23] : Deleted Table successfully.
+```
