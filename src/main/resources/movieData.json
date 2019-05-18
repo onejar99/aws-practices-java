@@ -48,7 +48,43 @@
         "Haku",
         "No-Face"
       ],
-      "rating": 7.0
+      "rating": 7.0,
+      "box_office": "$331.4 million"
+    }
+  },
+  {
+    "year": 2001,
+    "title": "The Fast And The Furious",
+    "detail_info": {
+      "release_date": "2001-10-13T00:00:00Z",
+      "language": "English",
+      "directors": [
+        "Robert \"Rob\" Cohen"
+      ],
+      "roles": [
+        "Brian O'Conner",
+        "Dominic \"Dom\" Toretto",
+        "Leticia \"Letty\" Ortiz",
+        "Mia Toretto"
+      ],
+      "rating": 6.5
+    }
+  },
+  {
+    "year": 2001,
+    "title": "Shaolin Soccer",
+    "detail_info": {
+      "release_date": "2001-07-12T00:00:00Z",
+      "language": "Cantonese",
+      "directors": [
+        "Stephen Chow",
+        "Lee Lik-Chi"
+      ],
+      "roles": [
+        "A-Hsing",
+        "May"
+      ],
+      "rating": 5.5
     }
   },
   {
@@ -64,7 +100,8 @@
         "Jack Dawson",
         "Rose DeWitt Bukater"
       ],
-      "rating": 10
+      "rating": 10,
+      "box_office": "$2.187 billion"
     }
   }
 ]
