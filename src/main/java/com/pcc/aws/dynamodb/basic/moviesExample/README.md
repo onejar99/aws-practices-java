@@ -131,3 +131,16 @@ Running
 }
 2019/05/18 19:13:05 INFO  [ItemScan.java:160] : Scan 1 items with rating >= 9.600000 succeeded.
 ```
+
+### ItemRead
+
+```
+2019/05/18 21:16:08 INFO  [ItemRead.java:25] : GetItem succeeded: {
+  "year" : 2019,
+  "detail_info" : {
+    "roles" : [ "Iron Man", "Captain America", "Hulk", "Black Widow" ],
+    "rating" : 8.32
+  },
+  "title" : "Avengers: Endgame"
+}
+```
