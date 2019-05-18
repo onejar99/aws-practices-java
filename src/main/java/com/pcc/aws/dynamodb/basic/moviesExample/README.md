@@ -16,7 +16,7 @@ Table Schema
 |||
 
 
-Running
+Running Example
 ---------------------
 
 ### TableCreation
@@ -143,4 +143,26 @@ Running
   },
   "title" : "Avengers: Endgame"
 }
+```
+
+### ItemRead
+
+#### `queryItemsByYear(table, 2001)`:
+
+```
+2019/05/19 00:37:47 INFO  [ItemQuery.java:58] : Query item 1: { Item: {year=2001, detail_info={release_date=2001-12-21T00:00:00Z, directors=[Ron Howard], roles=[John Nash, Alicia Nash], rating=6.5, language=English}, title=A Beautiful Mind} }
+2019/05/19 00:37:47 INFO  [ItemQuery.java:58] : Query item 2: { Item: {year=2001, detail_info={release_date=2001-07-12T00:00:00Z, directors=[Stephen Chow, Lee Lik-Chi], roles=[A-Hsing, May], rating=5.5, language=Cantonese}, title=Shaolin Soccer} }
+2019/05/19 00:37:47 INFO  [ItemQuery.java:58] : Query item 3: { Item: {year=2001, detail_info={release_date=2001-07-20T00:00:00Z, directors=[Hayao Miyazaki], roles=[Sen, Haku, No-Face], rating=7, language=Japanese, box_office=$331.4 million}, title=Spirited Away} }
+2019/05/19 00:37:47 INFO  [ItemQuery.java:58] : Query item 4: { Item: {year=2001, detail_info={release_date=2001-10-13T00:00:00Z, directors=[Robert "Rob" Cohen], roles=[Brian O'Conner, Dominic "Dom" Toretto, Leticia "Letty" Ortiz, Mia Toretto], rating=6.5, language=English}, title=The Fast And The Furious} }
+2019/05/19 00:37:47 INFO  [ItemQuery.java:60] : Query 4 items with year=[2001] succeeded.
+```
+
+#### `queryItemsByYearAndTitleAndRating(table, 2001, "S", "Z", 6f)`
+
+> 2001 原本有 4 筆，S-Z 條件和 rating>=6 各篩去一筆
+
+```
+2019/05/19 00:37:47 INFO  [ItemQuery.java:96] : Query item 1: { Item: {detail_info={roles=[Sen], rating=7, box_office=$331.4 million}, year=2001, title=Spirited Away} }
+2019/05/19 00:37:47 INFO  [ItemQuery.java:96] : Query item 2: { Item: {detail_info={roles=[Brian O'Conner], rating=6.5}, year=2001, title=The Fast And The Furious} }
+2019/05/19 00:37:47 INFO  [ItemQuery.java:98] : Query 2 items with year=2001 and titles S-Z succeeded
 ```
