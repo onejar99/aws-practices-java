@@ -22,7 +22,7 @@ Table Schema Elements
 
 | Index Name | Partition Key | Sort Key | Projection Type | Projection Included |
 |---|---|---|---|---|
-| TitleIndex | title | - | Only Key | - |
+| TitleIndex | title | - | All | - |
 | CountryIndex | country | - | Included | release_uts |
 | YearCountryIndex | year | country | Only Key | - |
 
@@ -176,4 +176,20 @@ Running Examples
 2019/05/19 00:37:47 INFO  [ItemQuery.java:96] : Query item 1: { Item: {detail_info={roles=[Sen], rating=7, box_office=$331.4 million}, year=2001, title=Spirited Away} }
 2019/05/19 00:37:47 INFO  [ItemQuery.java:96] : Query item 2: { Item: {detail_info={roles=[Brian O'Conner], rating=6.5}, year=2001, title=The Fast And The Furious} }
 2019/05/19 00:37:47 INFO  [ItemQuery.java:98] : Query 2 items with year=2001 and titles S-Z succeeded
+```
+
+### GSIGet
+
+```
+2019/05/19 23:22:07 INFO  [GSIGet.java:30] : Info for GSI IndexName=[YearCountryIndex]:
+2019/05/19 23:22:07 INFO  [GSIGet.java:36] : 	 - AttributeName: [year] KeyType=[HASH]
+2019/05/19 23:22:07 INFO  [GSIGet.java:36] : 	 - AttributeName: [country] KeyType=[RANGE]
+2019/05/19 23:22:07 INFO  [GSIGet.java:41] : 	 - The projection type is: [KEYS_ONLY]
+2019/05/19 23:22:07 INFO  [GSIGet.java:30] : Info for GSI IndexName=[CountryIndex]:
+2019/05/19 23:22:07 INFO  [GSIGet.java:36] : 	 - AttributeName: [country] KeyType=[HASH]
+2019/05/19 23:22:07 INFO  [GSIGet.java:41] : 	 - The projection type is: [INCLUDE]
+2019/05/19 23:22:07 INFO  [GSIGet.java:43] : 		 The 1 non-key projected attributes are: [release_uts]
+2019/05/19 23:22:07 INFO  [GSIGet.java:30] : Info for GSI IndexName=[TitleIndex]:
+2019/05/19 23:22:07 INFO  [GSIGet.java:36] : 	 - AttributeName: [title] KeyType=[HASH]
+2019/05/19 23:22:07 INFO  [GSIGet.java:41] : 	 - The projection type is: [ALL]
 ```
