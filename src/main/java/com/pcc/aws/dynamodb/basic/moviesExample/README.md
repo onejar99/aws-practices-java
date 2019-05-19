@@ -11,9 +11,20 @@ Local AWS configuration and credential files are configured.
 Table Schema Elements
 ---------------------
 
+### Key Schema
+
 | year (Partition Key) | title (Sort Key) | release_uts | country | detailInfo |
 |---|---|---|---|---|
 ||||||
+
+
+### GSI
+
+| Index Name | Partition Key | Sort Key | Projection Type | Projection Included |
+|---|---|---|---|---|
+| TitleIndex | title | - | Only Key | - |
+| CountryIndex | country | - | Included | release_uts |
+| YearCountryIndex | year | country | Only Key | - |
 
 
 Running Examples
