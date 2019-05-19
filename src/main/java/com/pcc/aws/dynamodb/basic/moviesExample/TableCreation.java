@@ -20,7 +20,7 @@ public class TableCreation {
     private static Log logger = LogFactory.getLog(TableCreation.class);
 
     public static void main(String[] args) {
-        final String tableName = "Movies92";
+        final String tableName = "Movies93";
         DynamoDB dynamoDB = ConfigServiceClient.createDynamoDBInstance();
         //createTable(dynamoDB, tableName);
         createTableWithGSI(dynamoDB, tableName);
@@ -66,7 +66,7 @@ public class TableCreation {
             GlobalSecondaryIndex titleIndex = new GlobalSecondaryIndex()
                     .withIndexName("TitleIndex")
                     .withProvisionedThroughput(new ProvisionedThroughput(1L, 1L))
-                    .withProjection(new Projection().withProjectionType(ProjectionType.KEYS_ONLY));
+                    .withProjection(new Projection().withProjectionType(ProjectionType.ALL));
             titleIndex.setKeySchema(titleIndexKeySchema);
 
             // Secondary Indexes 2: country
@@ -164,7 +164,7 @@ public class TableCreation {
                     .withIndexName("TitleIndex")
                     .withProvisionedThroughput(new ProvisionedThroughput()
                             .withReadCapacityUnits(1L).withWriteCapacityUnits(1L))
-                    .withProjection(new Projection().withProjectionType(ProjectionType.KEYS_ONLY));
+                    .withProjection(new Projection().withProjectionType(ProjectionType.ALL));
             List<KeySchemaElement> titleIndexKeySchema = new ArrayList<>();
             titleIndexKeySchema.add(new KeySchemaElement()
                     .withAttributeName("title")
