@@ -30,7 +30,7 @@ public class ItemQuery {
 
     public static void main(String[] args) {
         final String tableName = "Movies9";
-        DynamoDB dynamoDB = ConfigServiceClient.buildDynamoDBClient();
+        DynamoDB dynamoDB = ConfigServiceClient.createDynamoDBInstance();
         Table table = dynamoDB.getTable(tableName);
 
         queryItemsByYear(table, 2001);

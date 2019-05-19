@@ -14,7 +14,7 @@ public class TableCreation {
 
     public static void main(String[] args) {
         final String tableName = "Movies7";
-        DynamoDB dynamoDB = ConfigServiceClient.buildDynamoDBClient();
+        DynamoDB dynamoDB = ConfigServiceClient.createDynamoDBInstance();
         createTable(dynamoDB, tableName);
     }
 

@@ -16,7 +16,7 @@ public class ItemRead {
 
     public static void main(String[] args) {
         final String tableName = "Movies9";
-        DynamoDB dynamoDB = ConfigServiceClient.buildDynamoDBClient();
+        DynamoDB dynamoDB = ConfigServiceClient.createDynamoDBInstance();
         Table table = dynamoDB.getTable(tableName);
         readItem(table, 2019, "Avengers: Endgame");
     }

@@ -10,7 +10,7 @@ public class TableDeletion {
 
     public static void main(String[] args) {
         final String tableName = "Movies7";
-        DynamoDB dynamoDB = ConfigServiceClient.buildDynamoDBClient();
+        DynamoDB dynamoDB = ConfigServiceClient.createDynamoDBInstance();
         Table table = dynamoDB.getTable(tableName);
         deleteTable(table);
     }
