@@ -310,3 +310,9 @@ Running Examples
   "title" : "Avengers: Endgame"
 }
 ```
+
+### ItemDelete
+
+```
+2019/05/20 01:32:25 INFO  [ItemDelete.java:38] : DeleteItem succeeded: null
+```
