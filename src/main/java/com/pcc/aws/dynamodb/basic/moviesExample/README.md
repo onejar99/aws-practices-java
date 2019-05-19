@@ -226,3 +226,15 @@ Running Examples
 2019/05/19 23:45:08 INFO  [ItemQueryGSI.java:123] : Query item 2: { Item: {release_uts=878342400, country=United States, year=1997, title=Titanic} }
 2019/05/19 23:45:08 INFO  [ItemQueryGSI.java:125] : Query 2 items with country=[United States] and year < 2000 succeeded.
 ```
+
+### ItemScanGSI
+
+```
+2019/05/19 23:56:00 INFO  [ItemScanGSI.java:28] : Scan item 1: { Item: {country=United States, year=1999, title=The Mummy} }
+2019/05/19 23:56:00 INFO  [ItemScanGSI.java:28] : Scan item 2: { Item: {country=United States, year=2017, title=The Mummy} }
+2019/05/19 23:56:00 INFO  [ItemScanGSI.java:28] : Scan item 3: { Item: {country=United States, year=1997, title=Titanic} }
+2019/05/19 23:56:00 INFO  [ItemScanGSI.java:28] : Scan item 4: { Item: {country=China, year=2009, title=The Message} }
+2019/05/19 23:56:00 INFO  [ItemScanGSI.java:28] : Scan item 5: { Item: {country=United States, year=2001, title=A Beautiful Mind} }
+2019/05/19 23:56:00 INFO  [ItemScanGSI.java:28] : Scan item 6: { Item: {country=United States, year=2001, title=The Fast And The Furious} }
+2019/05/19 23:56:00 INFO  [ItemScanGSI.java:30] : Scan 6 items of GSI=[YearCountryIndex] succeeded.
+```

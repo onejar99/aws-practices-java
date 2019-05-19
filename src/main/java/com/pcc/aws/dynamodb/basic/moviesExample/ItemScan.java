@@ -11,7 +11,7 @@ import java.util.Iterator;
 
 /**
  * Note:
- * - 無法提供 pk 時使用 (Note: best practice 應該用 index 去 query)
+ * - 無法提供 partition key 時使用 (Note: best practice 應該用 index 去 query)
  * - scan 會讀取整個 table 中的每個 item 並回傳.
  * - 可以提供 filter_expression，只傳回符合條件的 item (不過在掃描過整個 table 之後才會套用篩選條件).
  *
