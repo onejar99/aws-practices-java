@@ -11,7 +11,7 @@ NameMap and ValueMap
 
 例如:
 
-```
+```java
 Map<String, String> nameMap = new HashMap<>();
 nameMap.put("#yr", "year");
 Map<String, Object> valueMap = new HashMap<>();
@@ -20,7 +20,7 @@ valueMap.put(":yr", year);
 
 完全相等於:
 
-```
+```java
 NameMap nameMap = new NameMap().with("#yr", "year");
 ValueMap valueMap = new ValueMap().withNumber(":yr", year);
 ```
@@ -49,7 +49,7 @@ ValueMap valueMap = new ValueMap().withNumber(":yr", year);
 ### NameMap 不可直接替換到子物件
 
 Not work:
-```
+```java
 ScanSpec scanSpec = new ScanSpec()
         .withFilterExpression("#info_lang = :lang")
         .withNameMap(new NameMap().with("#info_lang", "detail_info.language"))
@@ -57,7 +57,7 @@ ScanSpec scanSpec = new ScanSpec()
 ```
 
 Works:
-```
+```java
 ScanSpec scanSpec = new ScanSpec()
         .withFilterExpression("detail_info.#lang = :lang")
         .withNameMap(new NameMap().with("#lang", "language"))
