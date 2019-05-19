@@ -13,7 +13,7 @@ Table Schema Elements
 
 ### Key Schema
 
-| year (Partition Key) | title (Sort Key) | release_uts | country | detailInfo |
+| year (Partition Key) | title (Sort Key) | release_uts | country | detail_info |
 |---|---|---|---|---|
 ||||||
 
