@@ -2,6 +2,8 @@
   {
     "year": 2009,
     "title": "The Message",
+    "release_uts": 1254268800,
+    "country": "China",
     "detail_info": {
       "release_date": "2009-09-30T00:00:00Z",
       "language": "Mandarin",
@@ -21,6 +23,8 @@
   {
     "year": 2001,
     "title": "A Beautiful Mind",
+    "release_uts": 1008892800,
+    "country": "United States",
     "detail_info": {
       "release_date": "2001-12-21T00:00:00Z",
       "language": "English",
@@ -37,6 +41,7 @@
   {
     "year": 2001,
     "title": "Spirited Away",
+    "release_uts": 995587200,
     "detail_info": {
       "release_date": "2001-07-20T00:00:00Z",
       "language": "Japanese",
@@ -55,6 +60,8 @@
   {
     "year": 2001,
     "title": "The Fast And The Furious",
+    "release_uts": 1002931200,
+    "country": "United States",
     "detail_info": {
       "release_date": "2001-10-13T00:00:00Z",
       "language": "English",
@@ -73,6 +80,7 @@
   {
     "year": 2001,
     "title": "Shaolin Soccer",
+    "release_uts": 994896000,
     "detail_info": {
       "release_date": "2001-07-12T00:00:00Z",
       "language": "Cantonese",
@@ -90,6 +98,8 @@
   {
     "year": 1997,
     "title": "Titanic",
+    "release_uts": 878342400,
+    "country": "United States",
     "detail_info": {
       "release_date": "1997-11-01T00:00:00Z",
       "language": "English",
@@ -102,6 +112,45 @@
       ],
       "rating": 10,
       "box_office": "$2.187 billion"
+    }
+  },
+  {
+    "year": 1999,
+    "title": "The Mummy",
+    "country": "United States",
+    "detail_info": {
+      "release_date": "1999-05-07T00:00:00Z",
+      "language": "English",
+      "directors": [
+        "Stephen Sommers"
+      ],
+      "roles": [
+        "Rick O'Connell",
+        "Evelyn Carnahan",
+        "Imhotep"
+      ],
+      "rating": 6,
+      "box_office": "$415.9 million"
+    }
+  },
+  {
+    "year": 2017,
+    "title": "The Mummy",
+    "release_uts": 1496966400,
+    "country": "United States",
+    "detail_info": {
+      "release_date": "2017-06-09T00:00:00Z",
+      "language": "English",
+      "directors": [
+        "Alex Kurtzman"
+      ],
+      "roles": [
+        "Nick Morton",
+        "Ahmanet",
+        "Jennifer \"Jenny\" Halsey"
+      ],
+      "rating": 2.5,
+      "box_office": "$410 million"
     }
   }
 ]

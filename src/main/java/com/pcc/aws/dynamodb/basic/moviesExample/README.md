@@ -8,15 +8,15 @@ Local AWS configuration and credential files are configured.
 * `~/.aws/credentials`
 
 
-Table Schema
+Table Schema Elements
 ---------------------
 
-| year (Partition Key) | title (Sort Key) | detailInfo |
-|---|---|---|
-|||
+| year (Partition Key) | title (Sort Key) | release_uts | country | detailInfo |
+|---|---|---|---|---|
+||||||
 
 
-Running Example
+Running Examples
 ---------------------
 
 ### TableCreation

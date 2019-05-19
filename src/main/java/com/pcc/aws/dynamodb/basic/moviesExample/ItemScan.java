@@ -28,7 +28,7 @@ public class ItemScan {
 
         scanAllItems(table);
         scanItemsByYearRange(table, 1990, 2012);
-        scanItemsByTitleStartingWith(table, "A", "S");
+        scanItemsByTitleStartingWith(table, "A", "T");
         scanItemsByLanguage(table, "English");
         scanItemsByRatingThreshold(table, 9.6f);
     }
@@ -82,7 +82,8 @@ public class ItemScan {
     }
 
     /**
-     * 回傳 title 開頭字母在指定範圍的電影 (Note: search by sort key, best practice 應該用 index 去 query)
+     * 回傳 title 開頭字母在指定範圍的電影 (e.g., A~T=開頭是A~S)
+     * (Note: search by sort key, best practice 應該用 index 去 query)
      *
      * @param table
      * @param letter1

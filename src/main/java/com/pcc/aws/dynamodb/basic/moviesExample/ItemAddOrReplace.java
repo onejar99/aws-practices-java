@@ -56,11 +56,7 @@ public class ItemAddOrReplace {
 
             while (iter.hasNext()) {
                 currNode = (ObjectNode) iter.next();
-                int year = currNode.path("year").asInt();
-                String title = currNode.path("title").asText();
-                String detailInfoJson = currNode.path("detail_info").toString();
-
-                addOrUpdateItem(table, year, title, detailInfoJson);
+                addOrUpdateItem(table, currNode);
                 procCnt++;
             }
             logger.info(String.format("Total %d items imported.", procCnt));
@@ -84,10 +80,28 @@ public class ItemAddOrReplace {
         putItemToTable(table, item);
     }
 
-    private static void addOrUpdateItem(Table table, int year, String title, String infoJson) {
+    private static void addOrUpdateItem(Table table, int year, String title, int releaseUts, String country, String infoJson) {
         Item item = new Item()
                 .withPrimaryKey("year", year, "title", title)
+                .withNumber("release_uts", releaseUts)
+                .withString("country", country)
                 .withJSON("detail_info", infoJson);
+        putItemToTable(table, item);
+    }
+
+    private static void addOrUpdateItem(Table table, JsonNode node) {
+        int year = node.path("year").asInt();
+        String title = node.path("title").asText();
+        String detailInfoJson = node.path("detail_info").toString();
+        Item item = new Item()
+                .withPrimaryKey("year", year, "title", title)
+                .withJSON("detail_info", detailInfoJson);
+
+        JsonNode country = node.path("country");
+        JsonNode releaseUts = node.path("release_uts");
+        if(!"".equals(country.toString())) item.withString("country", country.asText());
+        if(!"".equals(releaseUts.toString())) item.withNumber("release_uts", releaseUts.asInt());
+
         putItemToTable(table, item);
     }
 
