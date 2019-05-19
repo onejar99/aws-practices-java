@@ -14,8 +14,8 @@ import java.util.Iterator;
  * - 至少要已知 partition key (condition 必須指定明確的 partition key, e.g., `#yr = :val`)
  * - 可搭配 sort key 或選擇不要，sort key 的 condition 可以使用條件判斷 (e.g., `>`, `<`, `between`)
  * - (sort key 就像 partition key 附屬品，如果沒有建 index，無法只 query sort key 而無指定 partitiona key)
- * - `withKeyConditionExpression` 只有 key 和 index 才能下
- * - 但其他 attribute 可以用 `withFilterExpression`
+ * - `withKeyConditionExpression` 只有用在 key
+ * - `withFilterExpression` 可以用在普通 attribute
  *
  * - Exception Example 1: condition 裡沒有指定 partition key
  *      - e.g., only `title = :val`
@@ -29,12 +29,14 @@ public class ItemQuery {
     private static Log logger = LogFactory.getLog(TableCreation.class);
 
     public static void main(String[] args) {
-        final String tableName = "Movies9";
+        final String tableName = "Movies93";
         DynamoDB dynamoDB = ConfigServiceClient.createDynamoDBInstance();
         Table table = dynamoDB.getTable(tableName);
 
         queryItemsByYear(table, 2001);
+        queryItemsByYearAndMultiDirector(table, 2001);
         queryItemsByYearAndTitleAndRating(table, 2001, "S", "Z", 6f);
+
     }
 
     /**
@@ -58,6 +60,35 @@ public class ItemQuery {
                 logger.info(String.format("Query item %d: %s", ++cnt, item));
             }
             logger.info(String.format("Query %d items with year=[%d] succeeded.", cnt, year));
+        }
+        catch (Exception e) {
+            logger.error("Unable to query the table!", e);
+        }
+    }
+
+    /**
+     * 回傳指定年份而且有 2 位以上導演的電影
+     *
+     * @param table
+     * @param year
+     */
+    private static void queryItemsByYearAndMultiDirector(Table table, int year) {
+        QuerySpec querySpec = new QuerySpec()
+                .withKeyConditionExpression("#yr = :yr")
+                .withFilterExpression("size(detail_info.directors) >= :num")
+                .withNameMap(new NameMap().with("#yr", "year"))
+                .withValueMap(new ValueMap()
+                        .withNumber(":yr", year)
+                        .withNumber(":num", 2));
+        try {
+            ItemCollection<QueryOutcome> items = table.query(querySpec);
+            Iterator<Item> iter = items.iterator();
+            int cnt = 0;
+            while (iter.hasNext()) {
+                Item item = iter.next();
+                logger.info(String.format("Query item %d: %s", ++cnt, item));
+            }
+            logger.info(String.format("Query %d items with year=[%d] and multiple directors succeeded.", cnt, year));
         }
         catch (Exception e) {
             logger.error("Unable to query the table!", e);
