@@ -21,10 +21,9 @@ public class ItemRead {
         readItem(table, 2019, "Avengers: Endgame");
     }
 
-    private static void readItem(Table table, int year, String title) {
+    public static void readItem(Table table, int year, String title) {
         GetItemSpec spec = new GetItemSpec()
                 .withPrimaryKey("year", year, "title", title);
-
         try {
             Item item = table.getItem(spec);
             logger.info(String.format("GetItem succeeded: %s", item.toJSONPretty()));

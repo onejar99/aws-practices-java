@@ -238,3 +238,75 @@ Running Examples
 2019/05/19 23:56:00 INFO  [ItemScanGSI.java:28] : Scan item 6: { Item: {country=United States, year=2001, title=The Fast And The Furious} }
 2019/05/19 23:56:00 INFO  [ItemScanGSI.java:30] : Scan 6 items of GSI=[YearCountryIndex] succeeded.
 ```
+
+### ItemUpdate
+
+> Remark:
+> `updateItemForDisappearingHero()` 執行`remove detail_info.#r[0]`，回傳內容會是新的 #r[0]，而非被移除的 #r[0]。
+> E.g., 移除的是 `"Iron Man"`，但回傳 `{ "detail_info" : { "roles" : [ "Captain America" ] } }`
+
+```
+2019/05/20 01:05:29 INFO  [ItemUpdate.java:37] : ======== Original Item ========
+2019/05/20 01:05:30 INFO  [ItemAddOrReplace.java:114] : Put item year=[2019] title=[Avengers: Endgame] succeeded: {}
+2019/05/20 01:05:30 INFO  [ItemRead.java:29] : GetItem succeeded: {
+  "detail_info" : {
+    "roles" : [ "Iron Man", "Captain America", "Hulk", "Black Widow" ],
+    "rating" : 8.32
+  },
+  "year" : 2019,
+  "title" : "Avengers: Endgame"
+}
+2019/05/20 01:05:30 INFO  [ItemUpdate.java:43] : ======== Update Item   ========
+2019/05/20 01:05:31 INFO  [ItemUpdate.java:67] : UpdateItem succeeded: {
+  "country" : "United States",
+  "detail_info" : {
+    "profit_millions" : 10,
+    "directors" : [ "Anthony Russo", "Joe Russo" ]
+  }
+}
+2019/05/20 01:05:31 INFO  [ItemRead.java:29] : GetItem succeeded: {
+  "country" : "United States",
+  "detail_info" : {
+    "profit_millions" : 10,
+    "directors" : [ "Anthony Russo", "Joe Russo" ],
+    "roles" : [ "Iron Man", "Captain America", "Hulk", "Black Widow" ],
+    "rating" : 8.32
+  },
+  "year" : 2019,
+  "title" : "Avengers: Endgame"
+}
+2019/05/20 01:05:31 INFO  [ItemUpdate.java:47] : ======== Update Item for Adding Profit (by incrementing an atomic counter) ========
+2019/05/20 01:05:31 INFO  [ItemUpdate.java:91] : UpdateItem succeeded: {
+  "detail_info" : {
+    "profit_millions" : 15
+  }
+}
+2019/05/20 01:05:31 INFO  [ItemRead.java:29] : GetItem succeeded: {
+  "country" : "United States",
+  "detail_info" : {
+    "profit_millions" : 15,
+    "directors" : [ "Anthony Russo", "Joe Russo" ],
+    "roles" : [ "Iron Man", "Captain America", "Hulk", "Black Widow" ],
+    "rating" : 8.32
+  },
+  "year" : 2019,
+  "title" : "Avengers: Endgame"
+}
+2019/05/20 01:05:31 INFO  [ItemUpdate.java:51] : ======== Update Item for Disappearing a Hero (with conditions hero > 2)  ========
+2019/05/20 01:05:32 INFO  [ItemUpdate.java:115] : UpdateItem succeeded: {
+  "detail_info" : {
+    "roles" : [ "Captain America" ]
+  }
+}
+2019/05/20 01:05:32 INFO  [ItemRead.java:29] : GetItem succeeded: {
+  "country" : "United States",
+  "detail_info" : {
+    "profit_millions" : 15,
+    "directors" : [ "Anthony Russo", "Joe Russo" ],
+    "roles" : [ "Captain America", "Hulk", "Black Widow" ],
+    "rating" : 8.32
+  },
+  "year" : 2019,
+  "title" : "Avengers: Endgame"
+}
+```

@@ -29,8 +29,15 @@ public class ItemAddOrReplace {
         DynamoDB dynamoDB = ConfigServiceClient.createDynamoDBInstance();
         Table table = dynamoDB.getTable(tableName);
 
-        // (1) add/update one item
-        // dummy data
+        // (1) add/update one dummy item
+        addOrReplaceOneDummyItem(table);
+
+        // (2) import data from a Json file
+        final Path filePath = Paths.get(System.getProperty("user.dir"), "src", "main", "resources", "movieData.json");
+        importDataFromMovieJson(table, filePath.toString());
+    }
+
+    public static void addOrReplaceOneDummyItem(Table table) {
         int year = 2019;
         String title = "Avengers: Endgame";
         final Map<String, Object> detailInfoMap = new HashMap<>();
@@ -38,10 +45,6 @@ public class ItemAddOrReplace {
         detailInfoMap.put("rating", 8.32);
 
         addOrUpdateItem(table, year, title, detailInfoMap);
-
-        // (2) import data from a Json file
-        final Path filePath = Paths.get(System.getProperty("user.dir"), "src", "main", "resources", "movieData.json");
-        importDataFromMovieJson(table, filePath.toString());
     }
 
     private static void importDataFromMovieJson(Table table, String filePath){
