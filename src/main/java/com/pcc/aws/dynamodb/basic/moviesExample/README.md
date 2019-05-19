@@ -193,3 +193,36 @@ Running Examples
 2019/05/19 23:22:07 INFO  [GSIGet.java:36] : 	 - AttributeName: [title] KeyType=[HASH]
 2019/05/19 23:22:07 INFO  [GSIGet.java:41] : 	 - The projection type is: [ALL]
 ```
+
+### ItemQueryGSI
+
+#### `queryItemsByTitle(table, "The Mummy")`:
+```
+2019/05/19 23:45:07 INFO  [ItemQueryGSI.java:43] : Query item 1: { Item: {country=United States, detail_info={release_date=1999-05-07T00:00:00Z, directors=[Stephen Sommers], roles=[Rick O'Connell, Evelyn Carnahan, Imhotep], rating=6, language=English, box_office=$415.9 million}, year=1999, title=The Mummy} }
+2019/05/19 23:45:07 INFO  [ItemQueryGSI.java:43] : Query item 2: { Item: {release_uts=1496966400, country=United States, detail_info={release_date=2017-06-09T00:00:00Z, directors=[Alex Kurtzman], roles=[Nick Morton, Ahmanet, Jennifer "Jenny" Halsey], rating=2.5, language=English, box_office=$410 million}, year=2017, title=The Mummy} }
+2019/05/19 23:45:07 INFO  [ItemQueryGSI.java:45] : Query 2 items with title=[The Mummy] succeeded.
+```
+
+#### `queryItemsByCountry(table, "United States")`:
+```
+2019/05/19 23:45:07 INFO  [ItemQueryGSI.java:69] : Query item 1: { Item: {country=United States, year=1999, title=The Mummy} }
+2019/05/19 23:45:07 INFO  [ItemQueryGSI.java:69] : Query item 2: { Item: {release_uts=878342400, country=United States, year=1997, title=Titanic} }
+2019/05/19 23:45:07 INFO  [ItemQueryGSI.java:69] : Query item 3: { Item: {release_uts=1496966400, country=United States, year=2017, title=The Mummy} }
+2019/05/19 23:45:07 INFO  [ItemQueryGSI.java:69] : Query item 4: { Item: {release_uts=1002931200, country=United States, year=2001, title=The Fast And The Furious} }
+2019/05/19 23:45:07 INFO  [ItemQueryGSI.java:69] : Query item 5: { Item: {release_uts=1008892800, country=United States, year=2001, title=A Beautiful Mind} }
+2019/05/19 23:45:07 INFO  [ItemQueryGSI.java:71] : Query 5 items with country=[United States] succeeded.
+```
+
+#### `queryItemsByYearAndCountry(table, 2001, "United States")`:
+```
+2019/05/19 23:45:07 INFO  [ItemQueryGSI.java:99] : Query item 1: { Item: {country=United States, year=2001, title=A Beautiful Mind} }
+2019/05/19 23:45:07 INFO  [ItemQueryGSI.java:99] : Query item 2: { Item: {country=United States, year=2001, title=The Fast And The Furious} }
+2019/05/19 23:45:07 INFO  [ItemQueryGSI.java:101] : Query 2 items with year=[2001] and country=[United States] succeeded.
+```
+
+#### `queryItemsByCountryBeforeYear(table, "United States", 2000)`:
+```
+2019/05/19 23:45:08 INFO  [ItemQueryGSI.java:123] : Query item 1: { Item: {country=United States, year=1999, title=The Mummy} }
+2019/05/19 23:45:08 INFO  [ItemQueryGSI.java:123] : Query item 2: { Item: {release_uts=878342400, country=United States, year=1997, title=Titanic} }
+2019/05/19 23:45:08 INFO  [ItemQueryGSI.java:125] : Query 2 items with country=[United States] and year < 2000 succeeded.
+```
